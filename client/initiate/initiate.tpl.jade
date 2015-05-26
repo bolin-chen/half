@@ -1,0 +1,40 @@
+#initiate
+  form.initiateVote
+    div
+      span title:
+      input(type='text', name='title')
+
+    div
+      span category:
+      select(name='category')
+        option(value='logo') logo
+        option(value='background') background
+
+    div
+      span first image:
+      input(type='file', name='firstImage', accept='image/*')
+    div
+      span first description:
+      textarea(name='firstDescription')
+    div
+      span first preview:
+      img.firstPreview(src='/previewDefault.jpg')
+
+    hr
+
+    div
+      span second image:
+      input(type='file', name='secondImage', accept='image/*')
+    div
+      span second description:
+      textarea(name='secondDescription')
+    div
+    div
+      span second preview:
+      img.secondPreview(src='/previewDefault.jpg')
+
+    div
+      span question:
+      textarea(name='question')
+
+    input(type='submit', value='upload')

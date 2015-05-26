@@ -1,0 +1,19 @@
+#votelist
+  div votelist
+
+  each votelist
+    hr
+
+    ul
+      li
+        span title:
+        a.title(href='/detail/#{_id}') #{title}
+      li
+        span question:
+        span #{question}
+      li
+        span firstImage:
+        img.firstImage(src='#{firstUrl}')
+      li
+        span secondImage:
+        img.secondImage(src='#{secondUrl}')
