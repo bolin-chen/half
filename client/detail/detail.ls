@@ -3,9 +3,9 @@ Template['detail'].helpers {
 }
 
 Template['detail'].events {
-  'click img.firstImage': (event)!-> voteForImage choice = 'first'
+  'click .vfirst': (event)!-> voteForImage choice = 'first'
 
-  'click img.secondImage': (event)!-> voteForImage choice = 'second'
+  'click .vsecond': (event)!-> voteForImage choice = 'second'
 
 }
 voteForImage = (choice)!->

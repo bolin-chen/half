@@ -1,9 +1,13 @@
 .main
   .header
-    h1 1/2 - Design Proposal Voting Website
+    div(class="ui blue inverted segment")
+      h1 1/2 - Design Proposal Voting Website
     +loginButtons
 
-  hr
+  a(href="/initiate") 发起投票
+  a(href="/") Homepage
 
   if currentUser
     {{> yield}}
+
+  div.footer

@@ -1,19 +1,18 @@
 #votelist
-  div votelist
+  div(class="ui blue segment")
+    each votelist
+      div(class="ui red segment")
+        div(class="ui left floated large header")
+          a.title(href='/detail/#{_id}') #{title}
+        div(class="ui clearing divider")
 
-  each votelist
-    hr
+        div(class="ui two column middle aligned relaxed grid basic segment")
+          div(class="column vimg")
+            img.firstImage(src='#{firstUrl}')
+            
 
-    ul
-      li
-        span title:
-        a.title(href='/detail/#{_id}') #{title}
-      li
-        span question:
-        span #{question}
-      li
-        span firstImage:
-        img.firstImage(src='#{firstUrl}')
-      li
-        span secondImage:
-        img.secondImage(src='#{secondUrl}')
+          div(class="ui vertical divider")
+            or
+
+          div(class="column vimg")
+            img.secondImage(src='#{secondUrl}')
