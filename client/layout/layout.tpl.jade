@@ -1,9 +1,15 @@
 .main
   .header
     h1 1/2 - Design Proposal Voting Website
-    +loginButtons
+    //- +loginButtons
+  .topContainer
+    a(href='/') homepage
+    if currentUser
+      a(href='/profile/#{currentUser.username}') #{currentUser.username}
+      button.logout(type='button') logout
+
 
   hr
 
-  if currentUser
-    {{> yield}}
+  //- if currentUser
+  {{> yield}}

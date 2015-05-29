@@ -9,8 +9,6 @@ mquandalle:jade
 vasaka:livescript-compiler
 fourseven:scss
 jquery
-semantic:ui
-semantic:ui-css
 cfs:standard-packages
 cfs:filesystem
 accounts-ui
@@ -19,3 +17,5 @@ insecure
 autopublish
 cfs:gridfs
 iron:router
+semantic:ui
+semantic:ui-css

@@ -1,0 +1,36 @@
+#sign
+  button.modeSwitch 注册
+
+  div #{signMode}
+
+  if isSignin
+    form.signin
+      div
+        span username:
+        input(type='text', name='username')
+      div
+        span password
+        input(type='password', name='password')
+
+      if errorMessage
+        div #{errorMessage}
+
+      div
+        input(type='submit', value='signin')
+  else
+      form.register
+        div
+          span username:
+          input(type='text', name='username')
+        div
+          span password:
+          input(type='password', name='password')
+        div
+          span confirm:
+          input(type='password', name='confirm')
+
+        if errorMessage
+          div #{errorMessage}
+
+        div
+          input(type='submit', value='register')

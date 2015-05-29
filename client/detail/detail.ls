@@ -1,5 +1,5 @@
 Template['detail'].helpers {
-
+  vote: -> Votes.findOne (Session.get 'voteId')
 }
 
 Template['detail'].events {
@@ -8,15 +8,16 @@ Template['detail'].events {
   'click img.secondImage': (event)!-> voteForImage choice = 'second'
 
 }
+
 voteForImage = (choice)!->
-  voteId = $ 'input[name=voteId]' .val!
+  voteId = Session.get 'voteId'
   username = Meteor.user! .username
 
-  console.log '-------------------------'
-  console.log voteId
-  console.log username
-  console.log (Ballots.find-one {voteId, username})
-  console.log '-------------------------'
+  # console.log '-------------------------'
+  # console.log voteId
+  # console.log username
+  # console.log (Ballots.find-one {voteId, username})
+  # console.log '-------------------------'
 
   if not Ballots.find-one {voteId, username}
     Ballots.insert {

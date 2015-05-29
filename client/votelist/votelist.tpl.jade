@@ -4,16 +4,39 @@
   each votelist
     hr
 
-    ul
-      li
-        span title:
-        a.title(href='/detail/#{_id}') #{title}
-      li
-        span question:
-        span #{question}
-      li
-        span firstImage:
-        img.firstImage(src='#{firstUrl}')
-      li
-        span secondImage:
-        img.secondImage(src='#{secondUrl}')
+    div.title
+      span title:
+      span #{title}
+    div.initiator
+      span initiator:
+      a(href='/profile/#{initiator}') #{initiator}
+    div.category
+      span category:
+      span #{category}
+    div.status
+      span status:
+      span #{status}
+    div.modifyDate
+      span modifyDate:
+      span #{modifyDate}
+
+    img.firstImage(src='#{firstUrl}')
+    div.firstDescription
+      span firstDescription:
+      span #{firstDescription}
+    div.numOfFirst
+      span numOfFirst:
+      span #{numOfFirst}
+
+
+    img.secondImage(src='#{secondUrl}')
+    div.secondDescription
+      span secondDescription:
+      span #{secondDescription}
+    div.numOfSecond
+      span numOfSecond:
+      span #{numOfSecond}
+
+    div.question
+      span question:
+      span #{vote.question}

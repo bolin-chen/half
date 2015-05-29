@@ -1,0 +1,19 @@
+#user
+  .userContainer
+    div
+      a(href='/editprofile') edit_profile
+    .avatar
+      span avatar:
+      img(src='#{profile.avatarUrl}')
+    .nickname
+      span nickname:
+      span #{profile.nickname}
+    .gender
+      span gender:
+      span #{profile.gender}
+    .age
+      span age:
+      span #{profile.age}
+    .occupation
+      span occupation:
+      span #{profile.occupation}
