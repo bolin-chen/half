@@ -15,7 +15,7 @@ root.Votes = new Mongo.Collection 'votes'
 
 # Votes中的document的格式
 # {
-#   title: string (代表投票的标题)
+#   title: string (代表投票的标题) 验证
 #   initiator: string (引用自UserInfo中的username，代表投票的发起者)
 #   category: string (从已定义的类别中选择，代表投票的类别)
 #   status: open or close (代表投票的状态，只有在open时才能进行投票，status 可由发起者进行修改)
@@ -24,9 +24,9 @@ root.Votes = new Mongo.Collection 'votes'
 #   secondUrl: string
 #   firstImaegId: string
 #   secondImageId: string
-#   firstDescription: string (第一张图片的描述)
-#   secondDescription: string
-#   question: string (最小长度为15，代表用户提出的问题)
+#   firstDescription: string (第一张图片的描述) 验证
+#   secondDescription: string  验证
+#   question: string (最小长度为15，代表用户提出的问题)  验证
 #   numOfFirst: int (代表选择第一张图的票数)
 #   numOfSecond: int (代表选择第二张图的票数)
 #
@@ -51,7 +51,7 @@ root.Comments = new Mongo.Collection 'comments'
 # {
 #   voteId: string (投票项目的id)
 #   username: string (发起该投票的用户)
-#   content: string(评论内容)
+#   content: string(评论内容)  验证
 # }
 
 #-------------------------------------------------
@@ -67,11 +67,24 @@ root.Ballots = new Mongo.Collection 'ballots'
 
 #-------------------------------------------------
 
-root.Follow = new Mongo.Collection 'follow'
+root.Follows = new Mongo.Collection 'follows'
 
-# Follow中的document的格式
+# Follows中的document的格式
 # {
 #   username: string (被关注的用户的用户名)
 #   follower: [] (关注者的用户名)
 # }
 
+# Users中的document的格式
+# {
+#   username: string  验证
+#   password: string  验证
+#   profile = {
+#     nickname: string (可以重复)  验证
+#     gender: M or F (即male or female)
+#     age: int  验证
+#     occupation: string (从已定义的职业中选择)
+#     avatar: string (引用自Image中的url,代表头像)
+#     avatarId: string (头像所用图片在Images中的id)
+#   }
+# }
