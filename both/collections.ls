@@ -30,6 +30,8 @@ root.Votes = new Mongo.Collection 'votes'
 #   numOfFirst: int (代表选择第一张图的票数)
 #   numOfSecond: int (代表选择第二张图的票数)
 #
+#   reportNum: int (被举报的次数)
+#
 #   statisticsOfFirst: {
 #     gender: [] (数组，长度为2，数组元素为int，两个元素分别代表投票的男性数量和女性数量,当元素为undefined时当成0)
 #     age: [] (数组，长度为9，数组元素为int，其元素分别代表投票的不同年龄段（10 ~ 20, 21 ~ 30, ..., 91 ~ 100）的数量,当元素为undefined时当成0)
@@ -74,6 +76,17 @@ root.Follows = new Mongo.Collection 'follows'
 #   username: string (被关注的用户的用户名)
 #   follower: [] (关注者的用户名)
 # }
+
+#-------------------------------------------------
+
+root.Reports = new Mongo.Collection 'reports' # 举报记录
+
+# Reports中的document的格式
+# {
+#   voteId: string (投票项目的id)
+#   username: string (进行举报的用户的用户名) # }
+
+#-------------------------------------------------
 
 # Users中的document的格式
 # {
