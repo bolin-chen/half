@@ -69,6 +69,8 @@ construct-vote-doc = (form)-> #用form里的值构造新插入Vote的document
     numOfFirst: 0
     numOfSecond: 0
 
+    reportNum: 0
+
     statisticsOfFirst: {
       gender: []
       age: []

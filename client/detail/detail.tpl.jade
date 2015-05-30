@@ -1,4 +1,21 @@
 #detail
+  form.deleteForm
+    input(type='hidden', name='voteId', value='#{vote._id}')
+    input(type='hidden', name='firstImageId', value='#{vote.firstImageId}')
+    input(type='hidden', name='secondImageId', value='#{vote.secondImageId}')
+    button delete
+
+  form.reportForm
+    input(type='hidden', name='voteId', value='#{vote._id}')
+    button report
+
+  div.reportNum
+    span reportNum:
+    span #{vote.reportNum}
+
+  div.edit
+    a(href='/editvote/#{vote._id}') edit
+
   div.title
     span title:
     span #{vote.title}
@@ -14,7 +31,6 @@
   div.modifyDate
     span modifyDate:
     span #{vote.modifyDate}
-  //- input(type='hidden', name='voteId', value='#{_id}')
 
   hr
 

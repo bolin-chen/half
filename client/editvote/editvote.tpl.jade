@@ -1,0 +1,38 @@
+#editvote
+  form.editvote
+    input(type='hidden', name='voteId', value='#{vote._id}')
+
+    div
+      span title:
+      input(type='text', name='title', value='#{vote.title}')
+
+    div
+      span category:
+      select(name='category')
+        option(value='logo') logo
+        option(value='background') background
+
+    div
+      span first description:
+      textarea(name='firstDescription')
+
+    div
+      span first image:
+      img.firstImage(src='#{vote.firstUrl}')
+
+    hr
+
+    div
+      span second description:
+      textarea(name='secondDescription')
+    div
+
+    div
+      span second image:
+      img.secondImage(src='#{vote.secondUrl}')
+
+    div
+      span question:
+      textarea(name='question')
+
+    input(type='submit', value='save')

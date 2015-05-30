@@ -4,9 +4,26 @@
   each votelist
     hr
 
+    form.deleteForm
+      input(type='hidden', name='voteId', value='#{_id}')
+      input(type='hidden', name='firstImageId', value='#{firstImageId}')
+      input(type='hidden', name='secondImageId', value='#{secondImageId}')
+      button delete
+
+    form.reportForm
+      input(type='hidden', name='voteId', value='#{_id}')
+      button report
+
+    div.reportNum
+      span reportNum:
+      span #{reportNum}
+
+    div.edit
+      a(href='/editvote/#{_id}') edit
+
     div.title
       span title:
-      span #{title}
+      a(href='/detail/#{_id}') #{title}
     div.initiator
       span initiator:
       a(href='/profile/#{initiator}') #{initiator}
