@@ -1,13 +1,44 @@
-.main
-  .header
-    div(class="ui blue inverted segment")
+//sidebar
+div(class="ui red vertical labeled icon sidebar menu")
+  a(class="item", href="/")
+    i(class="home icon")
+    p Homepage
+  p.item
+    分类
+  a.item
+    p 商标设计
+  a.item
+    p 图标设计
+  a.item
+    p 软件设计
+  a.item
+    p 网页设计
+  a.item
+    p 服装设计
+  a.item
+    p 照片
+  a.item
+    p 其他
+
+div.pusher
+  .main
+    .header
       h1 1/2 - Design Proposal Voting Website
-    +loginButtons
+      //- +loginButtons
+    .container
+      .topContainer
+        a(href='/') homepage
+        if currentUser
+          a(href='/profile/#{currentUser.username}') #{currentUser.username}
+          button.logout(type='button') logout
 
-  a(href="/initiate") 发起投票
-  a(href="/") Homepage
+      hr
 
-  if currentUser
-    {{> yield}}
+      //- if currentUser
+      {{> yield}}
 
-  div.footer
+    // 按钮
+    div(class="ui gray huge launch right attached button")
+      i(class="icon list layout")
+    // 底部
+    div.footer

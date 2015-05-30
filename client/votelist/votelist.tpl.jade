@@ -1,18 +1,42 @@
 #votelist
-  div(class="ui blue segment")
-    each votelist
-      div(class="ui red segment")
-        div(class="ui left floated large header")
-          a.title(href='/detail/#{_id}') #{title}
-        div(class="ui clearing divider")
+  div votelist
 
-        div(class="ui two column middle aligned relaxed grid basic segment")
-          div(class="column vimg")
-            img.firstImage(src='#{firstUrl}')
-            
+  each votelist
+    hr
 
-          div(class="ui vertical divider")
-            or
+    div.title
+      span title:
+      span #{title}
+    div.initiator
+      span initiator:
+      a(href='/profile/#{initiator}') #{initiator}
+    div.category
+      span category:
+      span #{category}
+    div.status
+      span status:
+      span #{status}
+    div.modifyDate
+      span modifyDate:
+      span #{modifyDate}
 
-          div(class="column vimg")
-            img.secondImage(src='#{secondUrl}')
+    img.firstImage(src='#{firstUrl}')
+    div.firstDescription
+      span firstDescription:
+      span #{firstDescription}
+    div.numOfFirst
+      span numOfFirst:
+      span #{numOfFirst}
+
+
+    img.secondImage(src='#{secondUrl}')
+    div.secondDescription
+      span secondDescription:
+      span #{secondDescription}
+    div.numOfSecond
+      span numOfSecond:
+      span #{numOfSecond}
+
+    div.question
+      span question:
+      span #{vote.question}

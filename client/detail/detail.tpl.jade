@@ -1,51 +1,46 @@
-div(class="ui blue segment")
-  div(class="ui left floated large header")
-    span #{title}
-  div(class="ui clearing divider")
+#detail
+  div.title
+    span title:
+    span #{vote.title}
+  div.initiator
+    span initiator:
+    span #{vote.initiator}
+  div.category
+    span category:
+    span #{vote.category}
+  div.status
+    span status:
+    span #{vote.status}
+  div.modifyDate
+    span modifyDate:
+    span #{vote.modifyDate}
+  //- input(type='hidden', name='voteId', value='#{_id}')
 
-  div.column
-    div(class="ui raised segment")
-      div.inform
-        div(class="ui ribbon label") initiator
-        p #{initiator}
-      div.inform
-        div(class="ui red label") category
-        p #{category}
-      div.inform
-        div(class="ui green label") modifyDate
-        p #{modifyDate}
+  hr
 
-  div(class="ui clearing divider")
+  img.firstImage(src='#{vote.firstUrl}')
+  div.firstDescription
+    span firstDescription:
+    span #{vote.firstDescription}
+  div.numOfFirst
+    span numOfFirst:
+    span #{vote.numOfFirst}
 
-  div.column
-    div(class="ui red segment")
-      div(class="ui red label") question
-      p #{question}
+  hr
 
-  input(type='hidden', name='voteId', value='#{_id}')
+  img.secondImage(src='#{vote.secondUrl}')
+  div.secondDescription
+    span secondDescription:
+    span #{vote.secondDescription}
+  div.numOfSecond
+    span numOfSecond:
+    span #{vote.numOfSecond}
+
+  hr
+
+  div.question
+    span question:
+    span #{vote.question}
 
 
-  div(class="ui green segment")
-    div(class="ui two column middle aligned relaxed grid basic segment")
-      div(class="column vimg")
-        div.imgArea
-          img.firstImage(src='#{firstUrl}')
-        div(class="circular ui icon button vfirst", width="90%")
-          i(class="thumbs up outline icon")
-          span #{numOfFirst}
-        div(class="ui teal segment")
-          div.firstDescription
-            span #{firstDescription}
 
-      div(class="ui vertical divider")
-        or
-
-      div(class="column vimg")
-        div.imgArea
-          img.secondImage(src='#{secondUrl}')
-        div(class="circular ui icon button vsecond", width="90%")
-          i(class="thumbs up outline icon")
-          span #{numOfSecond}
-        div(class="ui teal segment")
-          div.secondDescription
-            span #{secondDescription}

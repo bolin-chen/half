@@ -1,0 +1,43 @@
+#sign
+  div #{signMode}
+
+  if isSignin
+    form.signin
+      div(class="ui form segment signin")
+        div.field
+          label username
+          div(class="ui left labeled icon input")
+            input(type="text", placeholder="username", name="username")
+            i(class="user icon")
+        div.field
+          label password
+          div(class="ui left labeled icon input")
+            input(type="password", name="password")
+            i(class="lock icon")
+        if errorMessage
+          div #{errorMessage}
+        input(class="ui black submit button", value="submit", type="submit")
+        button(class="ui black submit button modeSwitch") 注册
+  else
+      form.register
+        div(class="ui form segment register")
+          div.field
+            label username
+            div(class="ui left labeled icon input")
+              input(type="text", placeholder="username", name="username")
+              i(class="user icon")
+          div.field
+            label password
+            div(class="ui left labeled icon input")
+              input(type="password", name="password")
+              i(class="lock icon")
+          div.field
+            lable confirm
+            div(class="ui left labeled icon input")
+              input(type="password", name="confirm")
+              i(class="lock icon")
+          if errorMessage
+            div #{errorMessage}
+          input(class="ui black submit button", value="submit", type="submit")
+          button(class="ui black submit button modeSwitch") 登录
+

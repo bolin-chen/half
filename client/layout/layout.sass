@@ -1,9 +1,33 @@
 p
   text-indent:20px
 
-.footer
-  height:30px
-  width:100%
-  color:gray
-  border-top:1px solid white
-  margin-top:20px
+.ui.attached.right.button
+  position:fixed
+  top:60px
+
+//展示内容
+.container
+  width:80%;
+  margin-left:auto
+  margin-right:auto
+
+//侧边栏中的说明引导部分
+.ui.sidebar.menu p.item
+  text-indent:0;
+  margin:0;
+  font-weight:bold;
+  font-size:1.5rem;
+
+.ui.sidebar.menu .item p
+  text-indent:0;
+
+//侧边宽度
+.ui.left.sidebar
+  width:150px;
+
+//取消侧边出来时container被半透明化
+.pushable > .pusher.dimmed:after
+  opacity: 0 !important;
+
+body.pushable > .pusher
+  background:url("/backgroud.webp") !important;
