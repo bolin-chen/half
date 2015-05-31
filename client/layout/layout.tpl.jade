@@ -8,8 +8,46 @@
       a(href='/profile/#{currentUser.username}') #{currentUser.username}
       button.logout(type='button') logout
 
+//sidebar
+div.ui.red.vertical.labeled.icon.sidebar.menu
+  a(class="item", href="/")
+    i.home.icon
+    p Homepage
+  p.item
+    分类
+  a.item
+    p 商标设计
+  a.item
+    p 图标设计
+  a.item
+    p 软件设计
+  a.item
+    p 网页设计
+  a.item
+    p 服装设计
+  a.item
+    p 照片
+  a.item
+    p 其他
 
-  hr
+div.pusher
+  .main
+    .header
+      h1 1/2 - Design Proposal Voting Website
+      //- +loginButtons
+    .container
+      .topContainer
+        a(href='/') homepage
+        if currentUser
+          a(href='/profile/#{currentUser.username}') #{currentUser.username}
+          button.logout(type='button') logout
+      hr
 
-  //- if currentUser
-  {{> yield}}
+      //- if currentUser
+      {{> yield}}
+
+    // 按钮
+    div.ui.gray.huge.launch.right.attached.button
+      i.icon.list.layout
+    // 底部
+    div.footer
