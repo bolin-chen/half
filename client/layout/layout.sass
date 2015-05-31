@@ -2,7 +2,6 @@ p
   text-indent:20px
 
 .ui.attached.right.button
-  position:fixed
   top:60px
 
 //展示内容
@@ -12,22 +11,24 @@ p
   margin-right:auto
 
 //侧边栏中的说明引导部分
-.ui.sidebar.menu p.item
+.ui.sidebar p.item
   text-indent:0;
   margin:0;
   font-weight:bold;
   font-size:1.5rem;
 
-.ui.sidebar.menu .item p
+.ui.sidebar .item p
   text-indent:0;
 
-//侧边宽度
+//sidebar width
+
 .ui.left.sidebar
   width:150px;
 
-//取消侧边出来时container被半透明化
-.pushable > .pusher.dimmed:after
-  opacity: 0 !important;
 
-body.pushable > .pusher
+//取消侧边出来时container被半透明化
+//.pushable > .pusher.dimmed:after
+  //opacity: 0 !important;
+
+body.pushable >
   background:url("/backgroud.webp") !important;
