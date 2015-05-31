@@ -25,15 +25,15 @@ div.ui.fixed.main.menu
   div.headContainer
     div.left.menu
       a.item.sidebarButton
-        i.icon.list.layout
+        i.layout.list.icon
       a.item.homepage(href="/") Black Or White
-    a.item(href="/initiate") 发起投票
+      a.item(href="/initiate") 发起投票
     div.right.menu
       if currentUser
-        div.item
+        a.item
           i.user.icon
           a(href='/profile/#{currentUser.username}') #{currentUser.username}
-        button.logout.item(type='button') 登出
+        a.logout.item(type='button') 登出
 
 //content
 .main

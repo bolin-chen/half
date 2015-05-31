@@ -1,3 +1,6 @@
+Template['initiate'].onRendered !->
+  check-form!
+
 Template['initiate'].helpers {
 
 }
@@ -90,3 +93,34 @@ image-preview = (input, image-selector)!-> if input.files and input.files[0]
 
   reader.onload = (e)!->
     image-selector .attr 'src', e.target.result
+
+#验证发起投票的表单
+check-form =!->
+  console.log 'check-form'
+  #这里可能是选择器问题，需要debug，plz！！
+  $ 'div.ui.form.segment' .form({
+    title: {
+      identifier: 'title'
+      rules: [{
+        type: 'empty'
+        prompt: 'empty title'   #可以在这里添加提示（暂时不能显示，将会解决）
+      }]
+    },
+    fDescription: {
+      identifier: 'firstDescription'
+      rules: [{
+        type: 'empty'
+      }]
+    },
+    secondDescription: {
+      identifier: 'secondDescription'
+      rules: [{
+        type: 'empty'
+      }]
+    },
+    question: {
+      identifier: 'question'
+      rules: [{
+        type: 'empty'
+      }]
+    }})

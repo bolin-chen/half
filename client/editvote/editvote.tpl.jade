@@ -2,10 +2,10 @@
   form.editvote
     input(type='hidden', name='voteId', value='#{vote._id}')
     div.ui.form.segment
-      div.field
+      div.field.disable
         label
          h1 Title
-        input(type="text", placeholder="title", value='#{vote.title}', name="title", maxlength="10", size="10")
+         input(type="text", placeholder="title", value='#{vote.title}', name="title", maxlength="10", readonly="readonly")
       div.field
         label category
         select(name='category')
