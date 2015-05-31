@@ -18,3 +18,4 @@ autopublish
 cfs:gridfs
 iron:router
 semantic:ui
+semantic:ui-css
