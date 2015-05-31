@@ -4,7 +4,7 @@ Router.on-before-action !->
   unless Meteor.user-id! then @redirect '/sign'
   @next!
 
-Router.on-after-action !-> document.title = '1/2 - Design Proposal Voting Website'
+Router.on-after-action !-> document.title = 'Black Or White'
 
 Router.route '/', !-> @render 'homepage'
 

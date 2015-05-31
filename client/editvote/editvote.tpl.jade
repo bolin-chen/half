@@ -1,38 +1,34 @@
 #editvote
   form.editvote
     input(type='hidden', name='voteId', value='#{vote._id}')
+    div.ui.form.segment
+      div.field
+        label
+         h1 Title
+        input(type="text", placeholder="title", value='#{vote.title}', name="title", maxlength="10", size="10")
+      div.field
+        label category
+        select(name='category')
+          option(value='logo') logo
+          option(value='background') background
+      div.ui.two.column.relaxed.grid.basic.segment
+        //first image
+        div.column
+          div.field
+            input(name='firstDescription', value="#{vote.firstDescription}")
+          div.field
+            img.firstImage(src='#{vote.firstUrl}')
 
-    div
-      span title:
-      input(type='text', name='title', value='#{vote.title}')
+        div.ui.vertical.divider
 
-    div
-      span category:
-      select(name='category')
-        option(value='logo') logo
-        option(value='background') background
-
-    div
-      span first description:
-      textarea(name='firstDescription')
-
-    div
-      span first image:
-      img.firstImage(src='#{vote.firstUrl}')
-
-    hr
-
-    div
-      span second description:
-      textarea(name='secondDescription')
-    div
-
-    div
-      span second image:
-      img.secondImage(src='#{vote.secondUrl}')
-
-    div
-      span question:
-      textarea(name='question')
-
-    input(type='submit', value='save')
+        //second image
+        div.column
+          div.field
+            input(name='secondDescription', value="#{vote.secondDescription}")
+          div.field
+            img.secondImage(src='#{vote.secondUrl}')
+      div.field
+        label
+          h1 Question
+          textarea(name='question') #{vote.question}
+      input(type='submit', value='save')
