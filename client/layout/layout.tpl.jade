@@ -1,15 +1,5 @@
-.main
-  .header
-    h1 1/2 - Design Proposal Voting Website
-    //- +loginButtons
-  .topContainer
-    a(href='/') homepage
-    if currentUser
-      a(href='/profile/#{currentUser.username}') #{currentUser.username}
-      button.logout(type='button') logout
-
 //sidebar
-div.ui.red.vertical.labeled.icon.sidebar.menu
+div.ui.sidebar.vertical.menu
   a(class="item", href="/")
     i.home.icon
     p Homepage
@@ -41,6 +31,7 @@ div.pusher
         if currentUser
           a(href='/profile/#{currentUser.username}') #{currentUser.username}
           button.logout(type='button') logout
+
       hr
 
       //- if currentUser
