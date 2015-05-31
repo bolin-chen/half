@@ -31,4 +31,12 @@ Template['votelist'].events {
       }
 
       Votes.update voteId, $inc: 'reportNum': 1
+
+  'submit form.statusForm': (event)!->
+    event.preventDefault!
+
+    voteId = event.target.voteId.value
+
+    isOpen = Votes.findOne voteId .isOpen
+    Votes.update voteId, $set: isOpen: !isOpen
 }

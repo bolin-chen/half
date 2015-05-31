@@ -9,6 +9,13 @@
     input(type='hidden', name='voteId', value='#{vote._id}')
     button report
 
+  form.statusForm
+    input(type='hidden', name='voteId', value='#{vote._id}')
+    if vote.isOpen
+      button close
+    else
+      button open
+
   div.reportNum
     span reportNum:
     span #{vote.reportNum}
@@ -57,6 +64,74 @@
   div.question
     span question:
     span #{vote.question}
+
+  div.statistics
+    div first statistics
+      div gender:
+        div
+          span male:
+          span #{vote.statisticsOfFirst.gender.male}
+        div
+          span female:
+          span #{vote.statisticsOfFirst.gender.female}
+
+      hr
+
+      div age:
+        div
+          span 0-20:
+          span #{vote.statisticsOfFirst.age.group0}
+        div
+          span 21-30:
+          span #{vote.statisticsOfFirst.age.group1}
+        div
+          span 31-40:
+          span #{vote.statisticsOfFirst.age.group2}
+        div
+          span 41-50:
+          span #{vote.statisticsOfFirst.age.group3}
+        div
+          span 50+:
+          span #{vote.statisticsOfFirst.age.group4}
+
+      hr
+
+      div occupation:
+        div
+          span 互联网科技:
+          span #{vote.statisticsOfFirst.occupation.occup0}
+        div
+          span 金融:
+          span #{vote.statisticsOfFirst.occupation.occup1}
+        div
+          span 信息传媒:
+          span #{vote.statisticsOfFirst.occupation.occup2}
+        div
+          span 教育:
+          span #{vote.statisticsOfFirst.occupation.occup3}
+        div
+          span 医疗卫生:
+          span #{vote.statisticsOfFirst.occupation.occup4}
+        div
+          span 服务业:
+          span #{vote.statisticsOfFirst.occupation.occup5}
+        div
+          span 地产建筑:
+          span #{vote.statisticsOfFirst.occupation.occup6}
+        div
+          span 国家机关:
+          span #{vote.statisticsOfFirst.occupation.occup7}
+        div
+          span 农林牧鱼:
+          span #{vote.statisticsOfFirst.occupation.occup8}
+        div
+          span 制作加工:
+          span #{vote.statisticsOfFirst.occupation.occup9}
+
+      //- 获取第二张图片的数据只需吧上面的 statisticsOfFirst 改成 statisticsOfSecond 即可
+
+
+
 
 
 

@@ -49,12 +49,42 @@ construct-vote-doc = (form)-> #用form里的值构造新插入Vote的document
 
 
 #------------------------------------------
+# 初始化统计数据
+
+  gender = {
+    male: 0
+    female: 0
+  }
+
+  age = {
+    group0: 0  # '0-20'
+    group1: 0  # '21-30'
+    group2: 0  # '31-40'
+    group3: 0  # '40-50'
+    group4: 0  # '50+'
+  }
+
+  occupation = {
+    occup0: 0
+    occup1: 0
+    occup2: 0
+    occup3: 0
+    occup4: 0
+    occup5: 0
+    occup6: 0
+    occup7: 0
+    occup8: 0
+    occup9: 0
+  }
+
+#--------------------------------------------
+# 返回新构建的vote document
 
   new-vote = {
     title: form.title.value
     initiator: Meteor.user!.username
     category: form.category.value
-    status: 'open'
+    isOpen: true
     modifyDate: new Date!
 
     firstUrl: '/uploading.jpg' # first-image .url {brokenIsFine: true}
@@ -72,14 +102,14 @@ construct-vote-doc = (form)-> #用form里的值构造新插入Vote的document
     reportNum: 0
 
     statisticsOfFirst: {
-      gender: []
-      age: []
-      occupation: []
+      gender: gender
+      age: age
+      occupation: occupation
     }
     statisticsOfSecond: {
-      gender: []
-      age: []
-      occupation: []
+      gender: gender
+      age: age
+      occupation: occupation
     }
 
   }

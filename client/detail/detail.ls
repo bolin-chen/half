@@ -3,9 +3,9 @@ Template['detail'].helpers {
 }
 
 Template['detail'].events {
-  'click img.firstImage': (event)!-> voteForImage choice = 'first'
+  'click img.firstImage': (event)!-> voteForImage choice = 'First'
 
-  'click img.secondImage': (event)!-> voteForImage choice = 'second'
+  'click img.secondImage': (event)!-> voteForImage choice = 'Second'
 
   'submit form.deleteForm': (event)!->
     event.preventDefault!
@@ -36,17 +36,22 @@ Template['detail'].events {
       }
 
       Votes.update voteId, $inc: 'reportNum': 1
+
+  'submit form.statusForm': (event)!->
+    event.preventDefault!
+
+    voteId = event.target.voteId.value
+
+    isOpen = Votes.findOne voteId .isOpen
+    Votes.update voteId, $set: isOpen: !isOpen
 }
 
 voteForImage = (choice)!->
   voteId = Session.get 'voteId'
-  username = Meteor.user! .username
+  user = Meteor.user!
+  username =  user.username
 
-  # console.log '-------------------------'
-  # console.log voteId
-  # console.log username
-  # console.log (Ballots.find-one {voteId, username})
-  # console.log '-------------------------'
+  if not Votes.findOne voteId .isOpen then return
 
   if not Ballots.find-one {voteId, username}
     Ballots.insert {
@@ -55,5 +60,22 @@ voteForImage = (choice)!->
       username: username
     }
 
-    if choice is 'first' then Votes.update voteId, $inc: 'numOfFirst': 1
-    else Votes.update voteId, $inc: 'numOfSecond': 1
+    userGender = user.profile.gender
+    userAge = ageToGroup user.profile.age
+    userOccupation = user.profile.occupation
+
+    setModifier = { $set: {} }
+    setModifier.$set['numOf'+ choice] = 1
+    setModifier.$set['statisticsOf' + choice + '.gender.' + userGender] = 1
+    setModifier.$set['statisticsOf' + choice + '.age.' + userAge] = 1
+    setModifier.$set['statisticsOf' + choice + '.occupation.' + userOccupation] = 1
+
+    Votes.update voteId, setModifier
+
+ageToGroup = (age)->
+  if 0 <= age <= 20 then 'group0'
+  else if 21 <= age <= 30 then 'group1'
+  else if 31 <= age <= 40 then 'group2'
+  else if 41 <= age <= 50 then 'group3'
+  else if age > 50 then then 'group4'
+
