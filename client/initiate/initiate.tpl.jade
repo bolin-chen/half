@@ -1,42 +1,37 @@
 #initiate
-  form.initiateVote
-    
-  form.initiateVote
-    div
-      span title:
-      input(type='text', name='title')
-
-    div
-      span category:
+  form.ui.form.segment.initiate
+    //- div.ui.form.segment
+    div.field
+      label
+       h1 Title
+      input(type="text", placeholder="title", name="title", maxlength="10", size="10")
+    div.field
+      label category
       select(name='category')
         option(value='logo') logo
         option(value='background') background
+    div.ui.two.column.relaxed.grid.basic.segment
+      //first image
+      div.column
+        div.field
+          input(type='file', name='firstImage', accept='image/*')
+        div.field
+          input(name='firstDescription', placeholder="description")
+        div.field
+          img.firstPreview(src='/previewDefault.jpg')
 
-    div
-      span first image:
-      input(type='file', name='firstImage', accept='image/*')
-    div
-      span first description:
-      textarea(name='firstDescription')
-    div
-      span first preview:
-      img.firstPreview(src='/previewDefault.jpg')
+      div.ui.vertical.divider
 
-    hr
-
-    div
-      span second image:
-      input(type='file', name='secondImage', accept='image/*')
-    div
-      span second description:
-      textarea(name='secondDescription')
-    div
-    div
-      span second preview:
-      img.secondPreview(src='/previewDefault.jpg')
-
-    div
-      span question:
-      textarea(name='question')
-
-    input(type='submit', value='upload')
+      //second image
+      div.column
+        div.field
+          input(type='file', name='secondImage', accept='image/*')
+        div.field
+          input(name='secondDescription', placeholder="description")
+        div.field
+          img.secondPreview(src='/previewDefault.jpg')
+    div.field
+      label
+        h1 Question
+        textarea(name='question')
+    input.ui.active.button(type='submit', value='upload')

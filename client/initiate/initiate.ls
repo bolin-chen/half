@@ -1,3 +1,6 @@
+Template['initiate'].onRendered !->
+  check-form!
+
 Template['initiate'].helpers {
 
 }
@@ -9,7 +12,7 @@ Template['initiate'].events {
   'change input[name=secondImage]': (event)!->
     image-preview event.target, $ '#initiate .secondPreview'
 
-  'submit form.initiateVote': (event)->
+  'submit form.initiate': (event)->
     event.prevent-default!
     new-vote = construct-vote-doc event.target
     Votes.insert new-vote
@@ -120,3 +123,33 @@ image-preview = (input, image-selector)!-> if input.files and input.files[0]
 
   reader.onload = (e)!->
     image-selector .attr 'src', e.target.result
+
+#验证发起投票的表单
+check-form =!->
+  console.log 'check-form'
+  $ '#initiate .ui.form.segment.initiate' .form({
+    title: {
+      identifier: 'title'
+      rules: [{
+        type: 'empty'
+        prompt: 'empty title'   #可以在这里添加提示（暂时不能显示，将会解决）
+      }]
+    },
+    fDescription: {
+      identifier: 'firstDescription'
+      rules: [{
+        type: 'empty'
+      }]
+    },
+    secondDescription: {
+      identifier: 'secondDescription'
+      rules: [{
+        type: 'empty'
+      }]
+    },
+    question: {
+      identifier: 'question'
+      rules: [{
+        type: 'empty'
+      }]
+    }})
