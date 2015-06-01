@@ -31,10 +31,10 @@
     span #{vote.initiator}
   div.category
     span category:
-    span #{category}
-  div.isOpen
-    span isOpen:
-    span #{vote.isOpen}
+    span #{vote.category}
+  div.status
+    span status:
+    span #{vote.status}
   div.modifyDate
     span modifyDate:
     span #{vote.modifyDate}
@@ -129,6 +129,18 @@
           span #{vote.statisticsOfFirst.occupation.occup9}
 
       //- 获取第二张图片的数据只需吧上面的 statisticsOfFirst 改成 statisticsOfSecond 即可
+
+      hr
+
+      form.commentForm
+        input(type='hidden', name='voteId', value='#{vote._id}')
+        input(name='content')
+        button submit
+      each comment
+        span #{username}
+        span  : 
+        span #{content}
+        br
 
 
 
