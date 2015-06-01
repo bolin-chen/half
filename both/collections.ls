@@ -136,7 +136,8 @@ root.Reports = new Mongo.Collection 'reports' # 举报记录
 # Reports中的document的格式
 # {
 #   voteId: string (投票项目的id)
-#   username: string (进行举报的用户的用户名) # }
+#   username: string (进行举报的用户的用户名)
+# }
 
 #-------------------------------------------------
 

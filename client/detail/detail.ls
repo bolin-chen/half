@@ -25,6 +25,7 @@ Template['detail'].events {
 
     Meteor.call 'removeBallots', {voteId: voteId}
     Meteor.call 'removeComments', {voteId: voteId}
+    Meteor.call 'removeReports', {voteId: voteId}
 
   'submit form.reportForm': (event)!->
     event.preventDefault!

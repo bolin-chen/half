@@ -14,6 +14,7 @@ Template['editvote'].events {
     Votes.update voteId, $set: {
       title: event.target.title.value
       category: event.target.category.value
+      modifyDate: new Date!
       firstDescription: event.target.firstDescription.value
       secondDescription: event.target.secondDescription.value
       question: event.target.question.value
