@@ -17,7 +17,8 @@ root.Votes = new Mongo.Collection 'votes'
 # {
 #   title: string (代表投票的标题) 验证
 #   initiator: string (引用自UserInfo中的username，代表投票的发起者)
-#   category: string (从已定义的类别中选择，代表投票的类别)
+#   category: categ0 - cate6 (代表投票的类别,
+#               分别为商标设计,图标设计,软件设计,网页设计,服装设计,照片,其他)
 #   isOpen: bool (投票是否开放，当投票为开放时才能进行投票，status 可由发起者进行修改)
 #   modifyDate: Date (最后一次修改的日期)
 #   firstUrl: string (第一张图票的url)

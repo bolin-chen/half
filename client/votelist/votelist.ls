@@ -1,6 +1,5 @@
 Template['votelist'].helpers {
-  votelist: ->
-    Votes.find {}
+  votelist: -> Votes.find {}
 }
 
 Template['votelist'].events {

@@ -21,6 +21,7 @@ Template['sign'].events {
       register-form.remove-class 'hide'
 
       signin-form.form 'reset'
+      register-form.form 'reset'
     else
       Session.set 'signMode', 'signin'
       $ '.modeSwitch' .text '注册'
@@ -28,6 +29,7 @@ Template['sign'].events {
       signin-form.remove-class 'hide'
       register-form.add-class 'hide'
 
+      signin-form.form 'reset'
       register-form.form 'reset'
 
   'submit form.signin': (event)!->
@@ -53,10 +55,10 @@ Template['sign'].events {
       username: username
       password: password
       profile:
-        nickname: ''
-        gender: ''
+        nickname: 'test'
+        gender: 'male'
         age: 0
-        occupation: ''
+        occupation: 'occup0'
         avatarUrl: '/defaultAvatar.jpg'
         avatarId: ''
     }

@@ -1,5 +1,8 @@
 Template['detail'].helpers {
   vote: -> Votes.findOne (Session.get 'voteId')
+
+  category: -> if vote = Votes.findOne (Session.get 'voteId')
+    orderToCategory vote.category
 }
 
 Template['detail'].events {
@@ -64,11 +67,17 @@ voteForImage = (choice)!->
     userAge = ageToGroup user.profile.age
     userOccupation = user.profile.occupation
 
-    setModifier = { $set: {} }
-    setModifier.$set['numOf'+ choice] = 1
-    setModifier.$set['statisticsOf' + choice + '.gender.' + userGender] = 1
-    setModifier.$set['statisticsOf' + choice + '.age.' + userAge] = 1
-    setModifier.$set['statisticsOf' + choice + '.occupation.' + userOccupation] = 1
+    console.log '-----------------------'
+    console.log userGender
+    console.log userAge
+    console.log userOccupation
+    console.log '-----------------------'
+
+    setModifier = { $inc: {} }
+    setModifier.$inc['numOf'+ choice] = 1
+    setModifier.$inc['statisticsOf' + choice + '.gender.' + userGender] = 1
+    setModifier.$inc['statisticsOf' + choice + '.age.' + userAge] = 1
+    setModifier.$inc['statisticsOf' + choice + '.occupation.' + userOccupation] = 1
 
     Votes.update voteId, setModifier
 
@@ -78,4 +87,15 @@ ageToGroup = (age)->
   else if 31 <= age <= 40 then 'group2'
   else if 41 <= age <= 50 then 'group3'
   else if age > 50 then then 'group4'
+
+orderToCategory = (order)->
+  switch order
+  | 'categ0'  => '商标设计'
+  | 'categ1'  => '图标设计'
+  | 'categ2'  => '软件设计'
+  | 'categ3'  => '网页设计'
+  | 'categ4'  => '服装设计'
+  | 'categ5'  => '照片'
+  | 'categ6'  => '其他'
+  | otherwise => console.log 'wrong category order'
 
