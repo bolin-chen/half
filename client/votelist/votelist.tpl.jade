@@ -1,6 +1,21 @@
 #votelist
   div votelist
 
+  select(name='category')
+    option(value='all', selected='selected') 全部
+    option(value='categ0') 商标设计
+    option(value='categ1') 图标设计
+    option(value='categ2') 软件设计
+    option(value='categ3') 网页设计
+    option(value='categ4') 服装设计
+    option(value='categ5') 照片
+    option(value='categ6') 其他
+
+  select(name='sort')
+    option(value='byTime', selected='selected') 按发布时间排序
+    option(value='byPopularity') 按热门程度排序
+    option(value='byReportNum') 按被举报数排序
+
   each votelist
     hr
 

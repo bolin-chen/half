@@ -1,5 +1,15 @@
+Template['votelist'].onRendered !->
+  Session.set 'category', 'all'
+  Session.set 'sort', 'byTime'
+
+
 Template['votelist'].helpers {
-  votelist: -> Votes.find {}
+  votelist: ->
+    category = Session.get 'category'
+    sort = Session.get 'sort'
+
+    if category is 'all' then Votes.find {}
+    else Votes.find {category: category}
 
   orderToCategory: (order)->
     switch order
@@ -50,4 +60,12 @@ Template['votelist'].events {
 
     isOpen = Votes.findOne voteId .isOpen
     Votes.update voteId, $set: isOpen: !isOpen
+
+  'change select[name=category]': (event)!->
+    console.log event.target.value
+    Session.set 'category', event.target.value
+
+  'change select[name=sort]': (event)!->
+    console.log event.target.value
+    Session.set 'sort', event.target.value
 }

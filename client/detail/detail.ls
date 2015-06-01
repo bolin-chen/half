@@ -50,6 +50,8 @@ Template['detail'].events {
       content: event.target.content.value
     }
 
+    event.target.content.value = ''
+
   'submit form.statusForm': (event)!->
     event.preventDefault!
 
