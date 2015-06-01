@@ -1,5 +1,5 @@
 //sidebar
-div.ui.sidebar.vertical.menu
+div.ui.sidebar.vertical.menu.left
   a(class="item", href="/")
     i.home.icon
     p Homepage
@@ -20,25 +20,28 @@ div.ui.sidebar.vertical.menu
   a.item
     p 其他
 
-div.pusher
-  .main
-    .header
-      h1 1/2 - Design Proposal Voting Website
-      //- +loginButtons
-    .container
-      .topContainer
-        a(href='/') homepage
-        if currentUser
+//top menu
+div.ui.fixed.main.menu
+  div.headContainer
+    div.left.menu
+      a.item.sidebarButton
+        i.layout.list.icon
+      a.item.homepage(href="/") Black Or White
+      a.item(href="/initiate") 发起投票
+    div.right.menu
+      if currentUser
+        a.item
+          i.user.icon
           a(href='/profile/#{currentUser.username}') #{currentUser.username}
-          button.logout(type='button') logout
+        a.logout.item(type='button') 登出
 
-      hr
+//content
+.main
+  .header
+  .container
+    //- if currentUser
+    {{> yield}}
 
-      //- if currentUser
-      {{> yield}}
-
-    // 按钮
-    div.ui.gray.huge.launch.right.attached.button
-      i.icon.list.layout
-    // 底部
-    div.footer
+  // 底部
+  div.footer
+    span.dataAndName © 2015 Black Or White

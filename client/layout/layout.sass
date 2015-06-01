@@ -1,34 +1,65 @@
 p
   text-indent:20px
 
-.ui.attached.right.button
-  top:60px
-
 //展示内容
-.container
+.container, .headContainer
   width:80%;
   margin-left:auto
   margin-right:auto
 
 //侧边栏中的说明引导部分
-.ui.sidebar p.item
-  text-indent:0;
-  margin:0;
-  font-weight:bold;
-  font-size:1.5rem;
+.ui.left.sidebar p.item
+  text-indent:0
+  margin:0
+  font-weight:bold
+  font-size:1.5rem
 
-.ui.sidebar .item p
-  text-indent:0;
+.ui.left.sidebar .item p
+  text-indent:0
 
 //sidebar width
 
 .ui.left.sidebar
-  width:150px;
+  width:150px
 
 
 //取消侧边出来时container被半透明化
-//.pushable > .pusher.dimmed:after
-  //opacity: 0 !important;
+.pushable > .pusher.dimmed:after
+  opacity: 0 !important
 
-body.pushable >
-  background:url("/backgroud.webp") !important;
+
+//main menu
+//div.ui.fixed.main.menu .headContainer
+  //height:50px;
+
+.headContainer button
+  border:0px
+
+
+//首页按钮
+a.item.homepage
+  font-weight:bold
+
+//
+.main
+  margin-top:35px
+  width:100%
+  background:url("/bg.jpg")
+
+//header should be edit
+.header
+  min-height:150px
+  width:100%
+
+//footer
+.footer
+  width:80%
+  margin-left:auto
+  margin-right:auto
+  margin-top:40px
+  border-top:1px solid #EEEEEE
+  padding:40px 0
+
+span.dataAndName
+  display:block
+  text-align:center

@@ -1,5 +1,5 @@
 Template['layout'].events {
-  'click button.logout': (event)!-> Meteor.logout!
+  'click a.logout': (event)!-> Meteor.logout!
 
-  'click .ui.attached.right.button': (event)!-> $ '.ui.sidebar' .sidebar ('toggle')
+  'click .sidebarButton': (event)!-> $ '.ui.sidebar' .sidebar ('toggle')
 }

@@ -1,44 +1,44 @@
 #sign
   div #{signMode}
 
-  if isSignin
-    form.signin
+  //- if isSignin
+  form.signin.ui.form.segment
 
-      div.ui.form.segment.signin
-        div.field
-          label username
-          div.ui.left.labeled.icon.input
-            input(type="text", placeholder="username", name="username")
-            i.user.icon
-        div.field
-          label password
-          div.ui.left.labeled.icon.input
-            input(type="password", name="password")
-            i.lock.icon
-        if errorMessage
-          div #{errorMessage}
-        input(class="ui black submit button", value="submit", type="submit")
-        button.ui.black.submit.button.modeSwitch 注册
-  else
-      form.register
-        div.ui.form.segment.signin
-          div.field
-            label username
-            div.ui.left.labeled.icon.input
-              input(type="text", placeholder="username", name="username")
-              i.user.icon
-          div.field
-            label password
-            div.ui.left.labeled.icon.input
-              input(type="password", name="password")
-              i.lock.icon
-          div.field
-            lable confirm
-            div.ui.left.labeled.icon.input
-              input(type="password", name="confirm")
-              i.lock.icon
-          if errorMessage
-            div #{errorMessage}
-          input(class="ui black submit button", value="submit", type="submit")
-          button.ui.black.submit.button.modeSwitch 登录
+    //- div.ui.form.segment.signin
+    div.field
+      label username
+      div.ui.left.labeled.icon.input
+        input(type="text", placeholder="username", name="username")
+        i.user.icon
+    div.field
+      label password
+      div.ui.left.labeled.icon.input
+        input(type="password", name="password")
+        i.lock.icon
+    if errorMessage
+      div #{errorMessage}
+    input.ui.black.submit.button(value="submit", type="submit")
+    button.ui.black.button.modeSwitch 注册
+  //- else
+  form.register.ui.form.segment.hide
+    //- div.ui.form.segment.register
+    div.field
+      label username
+      div.ui.left.labeled.icon.input
+        input(type="text", placeholder="username", name="username")
+        i.user.icon
+    div.field
+      label password
+      div.ui.left.labeled.icon.input
+        input(type="password", name="password")
+        i.lock.icon
+    div.field
+      lable confirm
+      div.ui.left.labeled.icon.input
+        input(type="password", name="confirm")
+        i.lock.icon
+    if errorMessage
+      div #{errorMessage}
+    input.ui.black.submit.button(value="submit", type="submit")
+    button.ui.black.button.modeSwitch 登录
 
