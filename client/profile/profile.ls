@@ -1,10 +1,34 @@
 Template['profile'].helpers {
+  userId: ->
+    if user = Meteor.users. find-one {username: Session.get 'username'}
+      user._id
+
+  isInBlacklist: ->
+    if user = Meteor.users. find-one {username: Session.get 'username'}
+      if Blacklist.findOne {username: user.username} then  true
+      else  false
+
   profile: ->
     if user = Meteor.users. find-one {username: Session.get 'username'}
       user.profile
+
   occupation: ->
     if user = Meteor.users. find-one {username: Session.get 'username'}
       orderToOccupation user.profile.occupation
+}
+
+Template['profile'].events {
+  'submit form.blacklistForm': (event)!->
+    event.preventDefault!
+
+    userId = event.target.userId.value
+    username = Meteor.users.findOne userId .username
+
+    blacklistInfo = Blacklist.findOne {username}
+
+    unless blacklistInfo then Blacklist.insert {username, date: new Date!}
+    else Blacklist.remove blacklistInfo._id
+
 }
 
 orderToOccupation = (order)->

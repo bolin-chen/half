@@ -14,6 +14,11 @@ Template['initiate'].events {
 
   'submit form.initiate': (event)->
     event.prevent-default!
+
+    if Blacklist.findOne {username: Meteor.user!.username}
+      console.log 'The user is in blacklist, can\'t initiate a vote'
+      return
+
     new-vote = construct-vote-doc event.target
     Votes.insert new-vote
 

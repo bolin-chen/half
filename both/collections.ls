@@ -143,6 +143,16 @@ root.Reports = new Mongo.Collection 'reports' # 举报记录
 
 #-------------------------------------------------
 
+root.Blacklist = new Mongo.Collection 'blacklist' # 黑名单，在黑名单中的用户禁止发起投票
+
+# Blacklist中的document的格式
+# {
+#   username: string (用户名)
+#   date: Date (被加进黑名单的时间)
+# }
+
+#-------------------------------------------------
+
 # Users中的document的格式
 # {
 #   username: string  验证

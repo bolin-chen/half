@@ -1,5 +1,17 @@
 #profile
   .userContainer
+    form.blacklistForm
+      input(name='userId', value='#{userId}', type='hidden')
+
+      if isInBlacklist
+        button removeFormBlacklist
+      else
+        button addToBlacklist
+
+    //- div
+    //-   span isInBlacklist:
+    //-   span #{isInBlacklist}
+
     div
       a(href='/editprofile') edit_profile
     .avatar
