@@ -1,15 +1,22 @@
 Template['votelist'].onRendered !->
   Session.set 'category', 'all'
-  Session.set 'sort', 'byTime'
+  Session.set 'sortBy', 'initiateDate'
 
 
 Template['votelist'].helpers {
   votelist: ->
     category = Session.get 'category'
-    sort = Session.get 'sort'
+    sortBy = Session.get 'sortBy'
 
-    if category is 'all' then Votes.find {}
-    else Votes.find {category: category}
+    if category is 'all' then selector =  {}
+    else selector = {category: category}
+
+    options = {sort: {}}
+    if sortBy isnt 'initiateDate' then options.sort[sortBy] = -1
+
+    options.sort['initiateDate'] = -1
+
+    Votes.find selector, options
 
   orderToCategory: (order)->
     switch order
@@ -65,7 +72,7 @@ Template['votelist'].events {
     console.log event.target.value
     Session.set 'category', event.target.value
 
-  'change select[name=sort]': (event)!->
+  'change select[name=sortBy]': (event)!->
     console.log event.target.value
-    Session.set 'sort', event.target.value
+    Session.set 'sortBy', event.target.value
 }

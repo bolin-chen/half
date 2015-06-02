@@ -79,11 +79,12 @@ voteForImage = (choice)!->
     userAge = ageToGroup user.profile.age
     userOccupation = user.profile.occupation
 
-    setModifier = { $set: {} }
-    setModifier.$set['numOf'+ choice] = 1
-    setModifier.$set['statisticsOf' + choice + '.gender.' + userGender] = 1
-    setModifier.$set['statisticsOf' + choice + '.age.' + userAge] = 1
-    setModifier.$set['statisticsOf' + choice + '.occupation.' + userOccupation] = 1
+    setModifier = { $inc: {} }
+    setModifier.$inc['numOfBallots'] = 1
+    setModifier.$inc['numOf'+ choice] = 1
+    setModifier.$inc['statisticsOf' + choice + '.gender.' + userGender] = 1
+    setModifier.$inc['statisticsOf' + choice + '.age.' + userAge] = 1
+    setModifier.$inc['statisticsOf' + choice + '.occupation.' + userOccupation] = 1
 
     Votes.update voteId, setModifier
 

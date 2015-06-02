@@ -88,6 +88,7 @@ construct-vote-doc = (form)-> #用form里的值构造新插入Vote的document
     initiator: Meteor.user!.username
     category: form.category.value
     isOpen: true
+    initiateDate: new Date!
     modifyDate: new Date!
 
     firstUrl: '/uploading.jpg' # first-image .url {brokenIsFine: true}
@@ -99,6 +100,7 @@ construct-vote-doc = (form)-> #用form里的值构造新插入Vote的document
 
     question: form.question.value
 
+    numOfBallots: 0
     numOfFirst: 0
     numOfSecond: 0
 

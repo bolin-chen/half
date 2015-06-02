@@ -35,9 +35,15 @@
   div.status
     span status:
     span #{vote.status}
+  div.initiateDate
+    span initiateDate:
+    span #{vote.initiateDate}
   div.modifyDate
     span modifyDate:
     span #{vote.modifyDate}
+  div.numOfBallots
+    span numOfBallots
+    span #{vote.numOfBallots}
 
   hr
 
@@ -138,7 +144,7 @@
         button submit
       each comment
         span #{username}
-        span  : 
+        span  :
         span #{content}
         br
 

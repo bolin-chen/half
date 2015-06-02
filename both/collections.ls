@@ -20,6 +20,7 @@ root.Votes = new Mongo.Collection 'votes'
 #   category: categ0 - cate6 (代表投票的类别,
 #               分别为商标设计,图标设计,软件设计,网页设计,服装设计,照片,其他)
 #   isOpen: bool (投票是否开放，当投票为开放时才能进行投票，status 可由发起者进行修改)
+#   initiateDate: Date (发起投票的日期)
 #   modifyDate: Date (最后一次修改的日期)
 #   firstUrl: string (第一张图票的url)
 #   secondUrl: string
@@ -28,6 +29,7 @@ root.Votes = new Mongo.Collection 'votes'
 #   firstDescription: string (第一张图片的描述) 验证
 #   secondDescription: string  验证
 #   question: string (最小长度为15，代表用户提出的问题)  验证
+#   numOfBallots: int (代表总票数)
 #   numOfFirst: int (代表选择第一张图的票数)
 #   numOfSecond: int (代表选择第二张图的票数)
 #

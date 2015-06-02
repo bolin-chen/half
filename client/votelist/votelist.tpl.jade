@@ -11,10 +11,10 @@
     option(value='categ5') 照片
     option(value='categ6') 其他
 
-  select(name='sort')
-    option(value='byTime', selected='selected') 按发布时间排序
-    option(value='byPopularity') 按热门程度排序
-    option(value='byReportNum') 按被举报数排序
+  select(name='sortBy')
+    option(value='initiateDate', selected='selected') 按发布时间排序
+    option(value='numOfBallots') 按热门程度排序
+    option(value='reportNum') 按被举报数排序
 
   each votelist
     hr
@@ -56,9 +56,18 @@
     div.isOpen
       span isOpen:
       span #{isOpen}
+
+    div.initiateDate
+      span initiateDate:
+      span #{initiateDate}
+
     div.modifyDate
       span modifyDate:
       span #{modifyDate}
+
+    div.numOfBallots
+      span numOfBallots
+      span #{numOfBallots}
 
     img.firstImage(src='#{firstUrl}')
     div.firstDescription
@@ -73,6 +82,7 @@
     div.secondDescription
       span secondDescription:
       span #{secondDescription}
+
     div.numOfSecond
       span numOfSecond:
       span #{numOfSecond}
