@@ -31,7 +31,7 @@
           //-   img.imgitem(src='#{vote.firstUrl}')
           div.title_text
             h2 #{vote.question}
-            h5 
+            h5
               span 来自
               a(href='/profile/#{vote.initiator}')  #{vote.initiator}
           //- div.reportForm
@@ -39,14 +39,14 @@
           //-   i.thumbs.down.icon.huge
           //-   span #{vote.reportNum}
           div.middleblock
-            h5 
+            h5
               span 分类:
-              span #{vote.category}
-            h5 
+              span {{orderToCategory vote.category}}
+            h5
               span 状态:
               span #{vote.status}
         div.detailquestion
-          //- h5 
+          //- h5
           //-   span 最后修改日期:
           //-   span #{vote.modifyDate}
           //- h1 #{vote.question}
@@ -54,7 +54,7 @@
         //first image
         div.column
           div.firstimgform
-            div.firstDescription 
+            div.firstDescription
               span #{vote.firstDescription}
             div.field
             div.field
@@ -65,7 +65,7 @@
         //second image
         div.column
           div.secondimgform
-            div.secondDescription 
+            div.secondDescription
               span #{vote.secondDescription}
             div.field
             div.field
@@ -74,7 +74,7 @@
       div.statisticsbody
         div.ui.two.column.relaxed.grid.basic.segment
             div.column
-              div.field 
+              div.field
                 h2 第一幅图片
               div.field 性别分布:
                 div
@@ -148,9 +148,9 @@
                   div.bar(style='width:#{vote.statisticsOfFirst.gender.occup9}')
 
             div.ui.vertical.divider
-            
+
             div.column
-              div.field 
+              div.field
                 h2 第二幅图片
               div.field 性别分布:
                 div
@@ -221,10 +221,10 @@
                 div
                   span 制作加工:
                   span #{vote.statisticsOfSecond.occupation.occup9}
-                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup9}')   
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup9}')
     div.commentbody
       div.ui.ribbon.label.huge 评论
-      div.detailbottom 
+      div.detailbottom
         each comment
           div.detail_comment_content
                 div.username #{username}
@@ -234,7 +234,7 @@
           div.field
               textarea(name='content')
           button.ui.gray.button submit
-    
+
     //- div.statistics
     //-   div.ui.ribbon.label.huge 统计
 

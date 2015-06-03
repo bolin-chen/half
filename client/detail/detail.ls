@@ -1,6 +1,15 @@
 Template['detail'].helpers {
   vote: -> Votes.findOne (Session.get 'voteId')
   comment: -> Comments.find {voteId: (Session.get 'voteId')}
+  orderToCategory: (order)->
+    switch order
+    |'categ0' => '商标设计'
+    |'categ1' => '图标设计'
+    |'categ2' => '软件设计'
+    |'categ3' => '网页设计'
+    |'categ4' => '服装设计'
+    |'categ5' => '照片'
+    |'categ6' => '其他'
 }
 
 Template['detail'].events {
