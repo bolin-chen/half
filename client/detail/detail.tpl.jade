@@ -15,138 +15,372 @@
       button close
     else
       button open
-
-  div.reportNum
-    span reportNum:
-    span #{vote.reportNum}
-
-  div.edit
-    a(href='/editvote/#{vote._id}') edit
-
-  div.title
-    span title:
-    span #{vote.title}
-  div.initiator
-    span initiator:
-    span #{vote.initiator}
-  div.category
-    span category:
-    span #{vote.category}
-  div.status
-    span isOpen:
-    span #{vote.isOpen}
-  div.initiateDate
-    span initiateDate:
-    span #{vote.initiateDate}
-  div.modifyDate
-    span modifyDate:
-    span #{vote.modifyDate}
-  div.numOfBallots
-    span numOfBallots
-    span #{vote.numOfBallots}
-
-  hr
-
-  img.firstImage(src='#{vote.firstUrl}')
-  div.firstDescription
-    span firstDescription:
-    span #{vote.firstDescription}
-  div.numOfFirst
-    span numOfFirst:
-    span #{vote.numOfFirst}
-
-  hr
-
-  img.secondImage(src='#{vote.secondUrl}')
-  div.secondDescription
-    span secondDescription:
-    span #{vote.secondDescription}
-  div.numOfSecond
-    span numOfSecond:
-    span #{vote.numOfSecond}
-
-  hr
-
-  div.question
-    span question:
-    span #{vote.question}
-
-  div.statistics
-    div first statistics
-      div gender:
+  div #{vote.title}
+    div.trash
+      input(type='hidden', name='voteId', value='#{vote._id}')
+      input(type='hidden', name='firstImageId', value='#{vote.firstImageId}')
+      input(type='hidden', name='secondImageId', value='#{vote.secondImageId}')
+      i.trash.large.icon
+    a.eiit(href='/editvote/#{vote._id}')
+      i.edit.large.icon
+    hr
+    div.detailbody
+      div.detailhead
         div
-          span male:
-          span #{vote.statisticsOfFirst.gender.male}
-        div
-          span female:
-          span #{vote.statisticsOfFirst.gender.female}
+          //- div.initiatorimg
+          //-   img.imgitem(src='#{vote.firstUrl}')
+          div.title_text
+            h2 #{vote.question}
+            h5 
+              span 来自
+              a(href='/profile/#{vote.initiator}')  #{vote.initiator}
+          //- div.reportForm
+          //-   input(type='hidden', name='voteId', value='#{_id}')
+          //-   i.thumbs.down.icon.huge
+          //-   span #{vote.reportNum}
+          div.middleblock
+            h5 
+              span 分类:
+              span #{vote.category}
+            h5 
+              span 状态:
+              span #{vote.status}
+        div.detailquestion
+          //- h5 
+          //-   span 最后修改日期:
+          //-   span #{vote.modifyDate}
+          //- h1 #{vote.question}
+      div.ui.two.column.relaxed.grid.basic.segment
+        //first image
+        div.column
+          div.firstimgform
+            div.firstDescription 
+              span #{vote.firstDescription}
+            div.field
+            div.field
+              img.firstImage(src='#{vote.firstUrl}')
 
-      hr
+        div.ui.vertical.divider
 
-      div age:
-        div
-          span 0-20:
-          span #{vote.statisticsOfFirst.age.group0}
-        div
-          span 21-30:
-          span #{vote.statisticsOfFirst.age.group1}
-        div
-          span 31-40:
-          span #{vote.statisticsOfFirst.age.group2}
-        div
-          span 41-50:
-          span #{vote.statisticsOfFirst.age.group3}
-        div
-          span 50+:
-          span #{vote.statisticsOfFirst.age.group4}
+        //second image
+        div.column
+          div.secondimgform
+            div.secondDescription 
+              span #{vote.secondDescription}
+            div.field
+            div.field
+              img.secondImage(src='#{vote.secondUrl}')
+      // 统计这里还存在一些问题，我希望拿到的数据已经是经过计算的百分比数据。需商榷。By 陈炜健
+      div.statisticsbody
+        div.ui.two.column.relaxed.grid.basic.segment
+            div.column
+              div.field 
+                h2 第一幅图片
+              div.field 性别分布:
+                div
+                  span 男:
+                  span #{vote.statisticsOfFirst.gender.male}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.male}')
+                div
+                  span 女:
+                  span #{vote.statisticsOfFirst.gender.female}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.female}')
+              div.field 年龄分布:
+                div
+                  span 0-20:
+                  span #{vote.statisticsOfFirst.age.group0}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.group0}')
+                div
+                  span 21-30:
+                  span #{vote.statisticsOfFirst.age.group1}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.group1}')
+                div
+                  span 31-40:
+                  span #{vote.statisticsOfFirst.age.group2}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.group2}')
+                div
+                  span 41-50:
+                  span #{vote.statisticsOfFirst.age.group3}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.group3}')
+                div
+                  span 50+:
+                  span #{vote.statisticsOfFirst.age.group4}
+              div.field 职业分布:
+                div
+                  span 互联网科技:
+                  span #{vote.statisticsOfFirst.occupation.occup0}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup0}')
+                div
+                  span 金融:
+                  span #{vote.statisticsOfFirst.occupation.occup1}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup1}')
+                div
+                  span 信息传媒:
+                  span #{vote.statisticsOfFirst.occupation.occup2}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.male}')
+                div
+                  span 教育:
+                  span #{vote.statisticsOfFirst.occupation.occup3}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup3}')
+                div
+                  span 医疗卫生:
+                  span #{vote.statisticsOfFirst.occupation.occup4}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup4}')
+                div
+                  span 服务业:
+                  span #{vote.statisticsOfFirst.occupation.occup5}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup5}')
+                div
+                  span 地产建筑:
+                  span #{vote.statisticsOfFirst.occupation.occup6}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup6}')
+                div
+                  span 国家机关:
+                  span #{vote.statisticsOfFirst.occupation.occup7}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup7}')
+                div
+                  span 农林牧鱼:
+                  span #{vote.statisticsOfFirst.occupation.occup8}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup8}')
+                div
+                  span 制作加工:
+                  span #{vote.statisticsOfFirst.occupation.occup9}
+                  div.bar(style='width:#{vote.statisticsOfFirst.gender.occup9}')
 
-      hr
+            div.ui.vertical.divider
+            
+            div.column
+              div.field 
+                h2 第二幅图片
+              div.field 性别分布:
+                div
+                  span 男:
+                  span #{vote.statisticsOfSecond.gender.male}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.male}')
+                div
+                  span 女:
+                  span #{vote.statisticsOfSecond.gender.female}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.female}')
+              div.field 年龄分布:
+                div
+                  span 0-20:
+                  span #{vote.statisticsOfSecond.age.group0}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.group0}')
+                div
+                  span 21-30:
+                  span #{vote.statisticsOfSecond.age.group1}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.group1}')
+                div
+                  span 31-40:
+                  span #{vote.statisticsOfSecond.age.group2}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.group2}')
+                div
+                  span 41-50:
+                  span #{vote.statisticsOfSecond.age.group3}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.group3}')
+                div
+                  span 50+:
+                  span #{vote.statisticsOfSecond.age.group4}
+              div.field 职业分布:
+                div
+                  span 互联网科技:
+                  span #{vote.statisticsOfSecond.occupation.occup0}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup0}')
+                div
+                  span 金融:
+                  span #{vote.statisticsOfSecond.occupation.occup1}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup1}')
+                div
+                  span 信息传媒:
+                  span #{vote.statisticsOfSecond.occupation.occup2}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.male}')
+                div
+                  span 教育:
+                  span #{vote.statisticsOfSecond.occupation.occup3}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup3}')
+                div
+                  span 医疗卫生:
+                  span #{vote.statisticsOfSecond.occupation.occup4}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup4}')
+                div
+                  span 服务业:
+                  span #{vote.statisticsOfSecond.occupation.occup5}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup5}')
+                div
+                  span 地产建筑:
+                  span #{vote.statisticsOfSecond.occupation.occup6}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup6}')
+                div
+                  span 国家机关:
+                  span #{vote.statisticsOfSecond.occupation.occup7}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup7}')
+                div
+                  span 农林牧鱼:
+                  span #{vote.statisticsOfSecond.occupation.occup8}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup8}')
+                div
+                  span 制作加工:
+                  span #{vote.statisticsOfSecond.occupation.occup9}
+                  div.bar(style='width:#{vote.statisticsOfSecond.gender.occup9}')   
+    div.commentbody
+      div.ui.ribbon.label.huge 评论
+      div.detailbottom 
+        each comment
+          div.detail_comment_content
+                div.username #{username}
+                div.content  #{content}
+        form.commentForm.ui.form
+          input(type='hidden',name='voteId',value='#{vote._id}')
+          div.field
+              textarea(name='content')
+          button.ui.gray.button submit
+    
+    //- div.statistics
+    //-   div.ui.ribbon.label.huge 统计
 
-      div occupation:
-        div
-          span 互联网科技:
-          span #{vote.statisticsOfFirst.occupation.occup0}
-        div
-          span 金融:
-          span #{vote.statisticsOfFirst.occupation.occup1}
-        div
-          span 信息传媒:
-          span #{vote.statisticsOfFirst.occupation.occup2}
-        div
-          span 教育:
-          span #{vote.statisticsOfFirst.occupation.occup3}
-        div
-          span 医疗卫生:
-          span #{vote.statisticsOfFirst.occupation.occup4}
-        div
-          span 服务业:
-          span #{vote.statisticsOfFirst.occupation.occup5}
-        div
-          span 地产建筑:
-          span #{vote.statisticsOfFirst.occupation.occup6}
-        div
-          span 国家机关:
-          span #{vote.statisticsOfFirst.occupation.occup7}
-        div
-          span 农林牧鱼:
-          span #{vote.statisticsOfFirst.occupation.occup8}
-        div
-          span 制作加工:
-          span #{vote.statisticsOfFirst.occupation.occup9}
 
-      //- 获取第二张图片的数据只需吧上面的 statisticsOfFirst 改成 statisticsOfSecond 即可
 
-      hr
 
-      form.commentForm
-        input(type='hidden', name='voteId', value='#{vote._id}')
-        input(name='content')
-        button submit
-      each comment
-        span #{username}
-        span  :
-        span #{content}
-        br
+
+
+
+
+
+
+
+
+//- 这是原来的代码
+  //- div.reportNum
+  //-   span reportNum:
+  //-   span #{vote.reportNum}
+
+  //- div.edit
+  //-   a(href='/editvote/#{vote._id}') edit
+
+  //- div.title
+  //-   span title:
+  //-   span #{vote.title}
+  //- div.initiator
+  //-   span initiator:
+  //-   span #{vote.initiator}
+  //- div.category
+  //-   span category:
+  //-   span #{vote.category}
+  //- div.status
+  //-   span isOpen:
+  //-   span #{vote.isOpen}
+  //- div.initiateDate
+  //-   span initiateDate:
+  //-   span #{vote.initiateDate}
+  //- div.modifyDate
+  //-   span modifyDate:
+  //-   span #{vote.modifyDate}
+  //- div.numOfBallots
+  //-   span numOfBallots
+  //-   span #{vote.numOfBallots}
+
+  //- hr
+
+  //- img.firstImage(src='#{vote.firstUrl}')
+  //- div.firstDescription
+  //-   span firstDescription:
+  //-   span #{vote.firstDescription}
+  //- div.numOfFirst
+  //-   span numOfFirst:
+  //-   span #{vote.numOfFirst}
+
+  //- hr
+
+  //- img.secondImage(src='#{vote.secondUrl}')
+  //- div.secondDescription
+  //-   span secondDescription:
+  //-   span #{vote.secondDescription}
+  //- div.numOfSecond
+  //-   span numOfSecond:
+  //-   span #{vote.numOfSecond}
+
+  //- hr
+
+  //- div.question
+  //-   span question:
+  //-   span #{vote.question}
+
+  //- div.statistics
+  //-   div first statistics
+  //-     div gender:
+  //-       div
+  //-         span male:
+  //-         span #{vote.statisticsOfFirst.gender.male}
+  //-       div
+  //-         span female:
+  //-         span #{vote.statisticsOfFirst.gender.female}
+
+  //-     hr
+
+  //-     div age:
+  //-       div
+  //-         span 0-20:
+  //-         span #{vote.statisticsOfFirst.age.group0}
+  //-       div
+  //-         span 21-30:
+  //-         span #{vote.statisticsOfFirst.age.group1}
+  //-       div
+  //-         span 31-40:
+  //-         span #{vote.statisticsOfFirst.age.group2}
+  //-       div
+  //-         span 41-50:
+  //-         span #{vote.statisticsOfFirst.age.group3}
+  //-       div
+  //-         span 50+:
+  //-         span #{vote.statisticsOfFirst.age.group4}
+
+  //-     hr
+
+  //-     div occupation:
+  //-       div
+  //-         span 互联网科技:
+  //-         span #{vote.statisticsOfFirst.occupation.occup0}
+  //-       div
+  //-         span 金融:
+  //-         span #{vote.statisticsOfFirst.occupation.occup1}
+  //-       div
+  //-         span 信息传媒:
+  //-         span #{vote.statisticsOfFirst.occupation.occup2}
+  //-       div
+  //-         span 教育:
+  //-         span #{vote.statisticsOfFirst.occupation.occup3}
+  //-       div
+  //-         span 医疗卫生:
+  //-         span #{vote.statisticsOfFirst.occupation.occup4}
+  //-       div
+  //-         span 服务业:
+  //-         span #{vote.statisticsOfFirst.occupation.occup5}
+  //-       div
+  //-         span 地产建筑:
+  //-         span #{vote.statisticsOfFirst.occupation.occup6}
+  //-       div
+  //-         span 国家机关:
+  //-         span #{vote.statisticsOfFirst.occupation.occup7}
+  //-       div
+  //-         span 农林牧鱼:
+  //-         span #{vote.statisticsOfFirst.occupation.occup8}
+  //-       div
+  //-         span 制作加工:
+  //-         span #{vote.statisticsOfFirst.occupation.occup9}
+
+  //-     //- 获取第二张图片的数据只需吧上面的 statisticsOfFirst 改成 statisticsOfSecond 即可
+
+  //-     hr
+
+  //-     form.commentForm
+  //-       input(type='hidden', name='voteId', value='#{vote._id}')
+  //-       input(name='content')
+  //-       button submit
+  //-     each comment
+  //-       span #{username}
+  //-       span  :
+  //-       span #{content}
+  //-       br
 
 
 

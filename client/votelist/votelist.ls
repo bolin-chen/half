@@ -75,4 +75,20 @@ Template['votelist'].events {
   'change select[name=sortBy]': (event)!->
     console.log event.target.value
     Session.set 'sortBy', event.target.value
+
+  # 这是宇文添加的，是为了在首页评论，貌似有bug
+  # 'submit form.commentForm': (event)!->
+  #   event.preventDefault!
+  #   voteId = event.target.voteId.value
+  #   Comments.insert {
+  #     voteId : voteId
+  #     username : Meteor.user!.username
+  #     content : event.target.content.value
+  #   }
+
+  # 'click .comment_button' : (event)!->
+  #   if('1'==$(".comment_container").attr("isShown"))
+  #     $(".comment_container").slideUp(500).attr("isShown","0")
+  #   else
+  #     $(".comment_container").slideDown(500).attr("isShown","1")
 }
