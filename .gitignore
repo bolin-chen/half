@@ -1,0 +1,4 @@
+# 忽略uploads文件夹
+uploads/
+# 忽略.DS_Store
+.DS_Store
