@@ -1,5 +1,5 @@
 #votelist
-  div votelist
+  //- div votelist
 
   select(name='category')
     option(value='all', selected='selected') 全部
@@ -36,122 +36,181 @@
       else
         button open
 
-    div.reportNum
-      span reportNum:
-      span #{reportNum}
+    div.votelistbody
+      div.votelisthead
+        //- div.initiatorimg
+        //-   img.imgitem(src='#{profile.avatarUrl}')
+        div.title_text
+          h2
+            a(href='/detail/#{_id}') #{title}
+          h5
+            span 来自
+            a(href='/profile/#{initiator}')  #{initiator}
+        //- div.reportForm
+        //-   input(type='hidden', name='voteId', value='#{_id}')
+        //-   i.thumbs.down.icon.huge
+        //-   span #{reportNum}
+      div.ui.two.column.relaxed.grid.basic.segment
+        //first image
+        div.column
+          div.firstimgform
+            div.firstDescription 
+              span #{firstDescription}
+            div.field
+            div.field
+              img.firstImage(src='#{firstUrl}')
+          //- div.vote.for.first.column
+          //-   div.fisrtPercentage
+          //-   span num:#{numOfFirst}
+        
+        div.ui.vertical.divider
 
-    div.edit
-      a(href='/editvote/#{_id}') edit
+        //second image
+        div.column
+          div.secondimgform
+            div.secondDescription 
+              span #{secondDescription}
+            div.field
+            div.field
+              img.secondImage(src='#{secondUrl}')
+          //- div.vote.for.second.column
+          //-   div.secondPercentage
+          //-   span num:#{numOfSecond}
+      //- 宇文添加的评论，貌似有bug
+      //- div.votelistbottom
+      //-   a.comment_button
+      //-     i.comment.icon.large
+      //-     //- p comments   
+      //- div.comment_container(style="display:none;",isShown="0")
+      //-   form.commentForm.ui.form
+      //-     input(type='hidden',name='voteId',value='#{vote._id}')
+      //-     div.field
+      //-         textarea(name='content')
+      //-     button.ui.gray.button submit
+      //-   div.past_comment
+      //-     each comment
+      //-       div.comment_content
+      //-           div.username #{username}
+      //-           div.content  #{content}
+    
 
-    div.title
-      span title:
-      a(href='/detail/#{_id}') #{title}
-    div.initiator
-      span initiator:
-      a(href='/profile/#{initiator}') #{initiator}
-    div.category
-      span category:
-      span {{orderToCategory category}}
+//- 这是以前的代码
+    //- div.reportNum
+    //-   span reportNum:
+    //-   span #{reportNum}
 
-    div.isOpen
-      span isOpen:
-      span #{isOpen}
+    //- div.edit
+    //-   a(href='/editvote/#{_id}') edit
 
-    div.initiateDate
-      span initiateDate:
-      span #{initiateDate}
+    //- div.title
+    //-   span title:
+    //-   a(href='/detail/#{_id}') #{title}
+    //- div.initiator
+    //-   span initiator:
+    //-   a(href='/profile/#{initiator}') #{initiator}
+    //- div.category
+    //-   span category:
+    //-   span {{orderToCategory category}}
 
-    div.modifyDate
-      span modifyDate:
-      span #{modifyDate}
+    //- div.isOpen
+    //-   span isOpen:
+    //-   span #{isOpen}
 
-    div.numOfBallots
-      span numOfBallots
-      span #{numOfBallots}
+    //- div.initiateDate
+    //-   span initiateDate:
+    //-   span #{initiateDate}
 
-    img.firstImage(src='#{firstUrl}')
-    div.firstDescription
-      span firstDescription:
-      span #{firstDescription}
-    div.numOfFirst
-      span numOfFirst:
-      span #{numOfFirst}
+    //- div.modifyDate
+    //-   span modifyDate:
+    //-   span #{modifyDate}
+
+    //- div.numOfBallots
+    //-   span numOfBallots
+    //-   span #{numOfBallots}
+
+    //- img.firstImage(src='#{firstUrl}')
+    //- div.firstDescription
+    //-   span firstDescription:
+    //-   span #{firstDescription}
+    //- div.numOfFirst
+    //-   span numOfFirst:
+    //-   span #{numOfFirst}
 
 
-    img.secondImage(src='#{secondUrl}')
-    div.secondDescription
-      span secondDescription:
-      span #{secondDescription}
+    //- img.secondImage(src='#{secondUrl}')
+    //- div.secondDescription
+    //-   span secondDescription:
+    //-   span #{secondDescription}
 
-    div.numOfSecond
-      span numOfSecond:
-      span #{numOfSecond}
+    //- div.numOfSecond
+    //-   span numOfSecond:
+    //-   span #{numOfSecond}
 
-    div.question
-      span question:
-      span #{question}
+    //- div.question
+    //-   span question:
+    //-   span #{question}
 
-    div.statistics
-      div first statistics
-        div gender:
-          div
-            span male:
-            span #{statisticsOfFirst.gender.male}
-          div
-            span female:
-            span #{statisticsOfFirst.gender.female}
+    //- div.statistics
+    //-   div first statistics
+    //-     div gender:
+    //-       div
+    //-         span male:
+    //-         span #{statisticsOfFirst.gender.male}
+    //-       div
+    //-         span female:
+    //-         span #{statisticsOfFirst.gender.female}
 
-        hr
+    //-     hr
 
-        div age:
-          div
-            span 0-20:
-            span #{statisticsOfFirst.age.group0}
-          div
-            span 21-30:
-            span #{statisticsOfFirst.age.group1}
-          div
-            span 31-40:
-            span #{statisticsOfFirst.age.group2}
-          div
-            span 41-50:
-            span #{statisticsOfFirst.age.group3}
-          div
-            span 50+:
-            span #{statisticsOfFirst.age.group4}
+    //-     div age:
+    //-       div
+    //-         span 0-20:
+    //-         span #{statisticsOfFirst.age.group0}
+    //-       div
+    //-         span 21-30:
+    //-         span #{statisticsOfFirst.age.group1}
+    //-       div
+    //-         span 31-40:
+    //-         span #{statisticsOfFirst.age.group2}
+    //-       div
+    //-         span 41-50:
+    //-         span #{statisticsOfFirst.age.group3}
+    //-       div
+    //-         span 50+:
+    //-         span #{statisticsOfFirst.age.group4}
 
-        hr
+    //-     hr
 
-        div occupation:
-          div
-            span 互联网科技:
-            span #{statisticsOfFirst.occupation.occup0}
-          div
-            span 金融:
-            span #{statisticsOfFirst.occupation.occup1}
-          div
-            span 信息传媒:
-            span #{statisticsOfFirst.occupation.occup2}
-          div
-            span 教育:
-            span #{statisticsOfFirst.occupation.occup3}
-          div
-            span 医疗卫生:
-            span #{statisticsOfFirst.occupation.occup4}
-          div
-            span 服务业:
-            span #{statisticsOfFirst.occupation.occup5}
-          div
-            span 地产建筑:
-            span #{statisticsOfFirst.occupation.occup6}
-          div
-            span 国家机关:
-            span #{statisticsOfFirst.occupation.occup7}
-          div
-            span 农林牧鱼:
-            span #{statisticsOfFirst.occupation.occup8}
-          div
-            span 制作加工:
-            span #{statisticsOfFirst.occupation.occup9}
+    //-     div occupation:
+    //-       div
+    //-         span 互联网科技:
+    //-         span #{statisticsOfFirst.occupation.occup0}
+    //-       div
+    //-         span 金融:
+    //-         span #{statisticsOfFirst.occupation.occup1}
+    //-       div
+    //-         span 信息传媒:
+    //-         span #{statisticsOfFirst.occupation.occup2}
+    //-       div
+    //-         span 教育:
+    //-         span #{statisticsOfFirst.occupation.occup3}
+    //-       div
+    //-         span 医疗卫生:
+    //-         span #{statisticsOfFirst.occupation.occup4}
+    //-       div
+    //-         span 服务业:
+    //-         span #{statisticsOfFirst.occupation.occup5}
+    //-       div
+    //-         span 地产建筑:
+    //-         span #{statisticsOfFirst.occupation.occup6}
+    //-       div
+    //-         span 国家机关:
+    //-         span #{statisticsOfFirst.occupation.occup7}
+    //-       div
+    //-         span 农林牧鱼:
+    //-         span #{statisticsOfFirst.occupation.occup8}
+    //-       div
+    //-         span 制作加工:
+    //-         span #{statisticsOfFirst.occupation.occup9}
 
-        //- 获取第二张图片的数据只需吧上面的 statisticsOfFirst 改成 statisticsOfSecond 即可
+    //-     //- 获取第二张图片的数据只需吧上面的 statisticsOfFirst 改成 statisticsOfSecond 即可

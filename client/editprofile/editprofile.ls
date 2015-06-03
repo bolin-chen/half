@@ -1,3 +1,6 @@
+Template['editprofile'].onRendered !-> #添加 By 陈炜健，参考 From 炽凯。
+  check-form!
+
 Template['editprofile'].helpers {
   profile: -> if Meteor.user! then Meteor.user! .profile
 }
@@ -47,3 +50,33 @@ updateAvatar = (avatarFile)!-> if avatarFile
 
         liveQuery.stop!
     }
+
+#验证修改个人信息的表单。添加 By 陈炜健，参考 From 炽凯。
+check-form =!->
+  console.log 'profile-check-form'
+  #这里可能存在选择器问题，需要debug
+  $ 'div.ui.form.segment' .form({
+    nickname: {
+      identifier: 'nickname'
+      rules: [{
+        type: 'empty'
+      }]
+    },
+    age: {
+      identifier: 'age'
+      rules: [{
+        type: 'integer'
+      }]
+    },
+    gender: {
+      identifier: 'gender'
+      rules: [{
+        type: 'empty'
+      }]
+    },
+    occupation: {
+      identifier: 'occupation'
+      rules: [{
+        type: 'empty'
+      }]
+    }})
