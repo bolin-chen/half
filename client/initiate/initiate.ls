@@ -20,7 +20,19 @@ Template['initiate'].events {
       return
 
     new-vote = construct-vote-doc event.target
-    Votes.insert new-vote
+
+    voteId = Votes.insert new-vote
+
+    console.log 'voteId:' + voteId
+
+    followers = Follows.findOne username: Meteor.user!.username .followers
+
+    console.log followers
+
+    for follower in followers
+      console.log 'test'
+
+      Meteor.call 'pushToSubscribeVotes', follower.username, voteId
 
     Router.go '/'
 }
@@ -133,7 +145,6 @@ image-preview = (input, image-selector)!-> if input.files and input.files[0]
 
 #验证发起投票的表单
 check-form =!->
-  console.log 'check-form'
   $ '#initiate .ui.form.segment.initiate' .form({
     title: {
       identifier: 'title'

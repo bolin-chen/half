@@ -8,9 +8,40 @@
       else
         button addToBlacklist
 
-    //- div
-    //-   span isInBlacklist:
-    //-   span #{isInBlacklist}
+    unless isOwnProfile
+      form.followForm
+        input(name='userId', value='#{userId}', type='hidden')
+
+        if isFollowing
+          button stopFollowing
+        else
+          button follow
+
+    div
+      a(href='/followingvote') followingvote
+
+    div
+      span followingNum:
+      span #{followingNum}
+
+    div
+      span followedByNum:
+      span #{followedByNum}
+
+    div
+      span following:
+
+      each following
+        a(href='/profile/#{username}') #{username}
+        span &nbsp;
+        //- 空格
+
+    div
+      span followedBy:
+
+      each followedBy
+        a(href='/profile/#{username}') #{username}
+        span &nbsp;
 
     div
       a(href='/editprofile') edit_profile

@@ -123,16 +123,6 @@ root.Ballots = new Mongo.Collection 'ballots'
 
 #-------------------------------------------------
 
-root.Follows = new Mongo.Collection 'follows'
-
-# Follows中的document的格式
-# {
-#   username: string (被关注的用户的用户名)
-#   follower: [] (关注者的用户名)
-# }
-
-#-------------------------------------------------
-
 root.Reports = new Mongo.Collection 'reports' # 举报记录
 
 # Reports中的document的格式
@@ -149,6 +139,28 @@ root.Blacklist = new Mongo.Collection 'blacklist' # 黑名单，在黑名单中�
 # {
 #   username: string (用户名)
 #   date: Date (被加进黑名单的时间)
+# }
+
+#-------------------------------------------------
+
+root.Follows = new Mongo.Collection 'follows'
+
+# Follows中的document的格式
+# {
+#   username: string (被关注的用户的用户名)
+#   followers: [{username: string}] (关注者的用户名)
+# }
+
+#-------------------------------------------------
+
+root.SubscribeVotes = new Mongo.Collection 'subscribevotes'
+
+# 订阅列表，用于记录用户所关注的人发布的投票项目
+
+# subscribeVotes中的document的格式
+# {
+#   username: string (拥有该订阅列表的用户的用户名)
+#   votes: [{voteId: string}] (用户所订阅到的投票项目的id)
 # }
 
 #-------------------------------------------------

@@ -29,3 +29,5 @@ Router.route '/editprofile' !-> @render 'editprofile'
 Router.route '/editvote/:id', !->
   Session.set 'voteId', @params.id
   @render 'editvote'
+
+Router.route '/followingvote' !-> @render 'followingvote'

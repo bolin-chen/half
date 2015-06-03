@@ -1,0 +1,22 @@
+#followingvote
+  div followingvote:
+    each votes
+      hr
+
+      div
+        with singleVote voteId
+          div
+            span title:
+            a(href='/detail/#{_id}') #{title}
+          div
+            span initiator:
+            span #{initiator}
+          div
+            span category:
+            span #{category}
+          div
+            span isOpen:
+            span #{isOpen}
+          div
+            span initiateDate:
+            span #{initiateDate}

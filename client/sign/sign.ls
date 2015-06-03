@@ -65,14 +65,26 @@ Template['sign'].events {
 
     Accounts.createUser userOption, (err)!->
       if err then Session.set 'errorMessage', err.message
-      else Router.go '/'
+      else
+        Router.go '/'
+
+        # 初始化一个属于该用户的Follows collections
+        Follows.insert {
+          username
+          followers: []
+        }
+
+        # 初始化一个属于该用户的SubscribeVotes collections
+        SubscribeVotes.insert {
+          username
+          votes: []
+        }
 }
 
 #以下叶炽凯添加的代码
 
 #登录验证
 check-signin =!->
-  console.log 'function run'
   $ '#sign .ui.form.signin' .form ({
     username: {
       identifier: 'username',
