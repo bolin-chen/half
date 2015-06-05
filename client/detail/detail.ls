@@ -10,6 +10,9 @@ Template['detail'].helpers {
     |'categ4' => '服装设计'
     |'categ5' => '照片'
     |'categ6' => '其他'
+  percentage: (num1, num2)->
+    if (num1 / (num1 + num2) * 100) then (num1 / (num1 + num2) * 100) + '%'
+    else "1%"
 }
 
 Template['detail'].events {
