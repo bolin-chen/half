@@ -1,45 +1,47 @@
 #editprofile
-  form.editprofile
+  
     div.ui.form.segment
-      div.field
-        h1 修改个人信息
-      div.field
-        .avatar
-          label 头像
-          div
-            img(src='#{profile.avatarUrl}')
-          input(type='file', accept='image/*', name='avatar')
-      div.field
-        .nickname
-          label 昵称
-          div.ui.left.labeled.icon.input
-            input(type='text', placeholder="#{profile.nickname}", name='nickname')
-            i.user.icon
-      div.field
-        .age
-          label 年龄
-          div.ui.left.labeled.input
-            input(type='text', placeholder="#{profile.age}", name='age')
-      div.field
-        .gender
-          label 性别
-          div
-            input(type='radio', name='gender', value='male')
-            span 男
-            input(type='radio', name='gender', value='female')
-            span 女
-      div.field
-        .occupation
-          label 职业
-          select(name='occupation')
-            option(value='occup0') 互联网科技
-            option(value='occup1') 金融
-            option(value='occup2') 信息传媒
-            option(value='occup3') 教育
-            option(value='occup4') 医疗卫生
-            option(value='occup5') 服务业
-            option(value='occup6') 地产建筑
-            option(value='occup7') 国家机关
-            option(value='occup8') 农林牧鱼
-            option(value='occup9') 制作加工
-      input(type='submit', value='提交')
+      form.editprofile
+        div.field
+          h1 修改个人信息
+        div.field
+          .avatar
+            label 头像
+            div
+              img(src='#{profile.avatarUrl}')
+            input(type='file', accept='image/*', name='avatar')
+        div.field
+          .nickname
+            label 昵称
+            div.ui.left.labeled.icon.input
+              i.user.icon
+              input(type='text', value="#{profile.nickname}", name='nickname')
+        div.field
+          .age
+            label 年龄
+            div.ui.left.labeled.input
+              input(type='text', value="#{profile.age}", name='age')
+        div.field
+          .gender
+            label 性别
+            div
+              input(type='radio', name='gender', value='male')
+              span 男
+              input(type='radio', name='gender', value='female')
+              span 女
+        div.field
+          .occupation
+            label 职业
+            select(name='occupation')
+              option(value='occup0') 互联网科技
+              option(value='occup1') 金融
+              option(value='occup2') 信息传媒
+              option(value='occup3') 教育
+              option(value='occup4') 医疗卫生
+              option(value='occup5') 服务业
+              option(value='occup6') 地产建筑
+              option(value='occup7') 国家机关
+              option(value='occup8') 农林牧鱼
+              option(value='occup9') 制作加工
+        input(type='submit', value='提交')
+      div.errormessage.ui.error.message

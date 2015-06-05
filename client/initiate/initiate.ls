@@ -149,25 +149,28 @@ check-form =!->
     title: {
       identifier: 'title'
       rules: [{
-        type: 'empty'
-        prompt: 'empty title'   #可以在这里添加提示（暂时不能显示，将会解决）
+        type: 'empty',
+        prompt: 'Title 不能为空'
       }]
     },
     fDescription: {
       identifier: 'firstDescription'
       rules: [{
-        type: 'empty'
+        type: 'empty',
+        prompt: '第一幅图的描述不能为空'
       }]
     },
     secondDescription: {
       identifier: 'secondDescription'
       rules: [{
-        type: 'empty'
+        type: 'empty',
+        prompt: '第二幅图的描述不能为空'
       }]
     },
     question: {
       identifier: 'question'
       rules: [{
-        type: 'empty'
+        type: 'empty',
+        prompt: 'Question 不能为空'
       }]
     }})

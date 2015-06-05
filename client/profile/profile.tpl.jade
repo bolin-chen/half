@@ -1,96 +1,66 @@
-//- #profile
-//-   .userContainer
-//-     form.blacklistForm
-//-       input(name='userId', value='#{userId}', type='hidden')
-
-//-       if isInBlacklist
-//-         button removeFormBlacklist
-//-       else
-//-         button addToBlacklist
-
-//-     unless isOwnProfile
-//-       form.followForm
-//-         input(name='userId', value='#{userId}', type='hidden')
-
-//-         if isFollowing
-//-           button stopFollowing
-//-         else
-//-           button follow
-
-//-     div
-//-       a(href='/followingvote') followingvote
-
-//-     div
-//-       span followingNum:
-//-       span #{followingNum}
-
-//-     div
-//-       span followedByNum:
-//-       span #{followedByNum}
-
-//-     div
-//-       span following:
-
-//-       each following
-//-         a(href='/profile/#{username}') #{username}
-//-         span &nbsp;
-//-         //- 空格
-
-//-     div
-//-       span followedBy:
-
-//-       each followedBy
-//-         a(href='/profile/#{username}') #{username}
-//-         span &nbsp;
-
-//-     div
-//-       a(href='/editprofile') edit_profile
-//-     .avatar
-//-       span avatar:
-//-       img(src='#{profile.avatarUrl}')
-//-     .nickname
-//-       span nickname:
-//-       span #{profile.nickname}
-//-     .gender
-//-       span gender:
-//-       span #{profile.gender}
-//-     .age
-//-       span age:
-//-       span #{profile.age}
-//-     .occupation
-//-       span occupation:
-//-       span #{occupation}
-
-
-
 #user
   .userContainer
+    form.blacklistForm
+      input(name='userId', value='#{userId}', type='hidden')
+
+      if isInBlacklist
+        button.ui.black.button 移出黑名单
+      else
+        button.ui.black.button 拉入黑名单
+
+    unless isOwnProfile
+      form.followForm
+        input(name='userId', value='#{userId}', type='hidden')
+
+        if isFollowing
+          button.ui.green.button 取消关注
+        else
+          button.ui.green.button 关注
+    h1 #{name} 的个人信息
     div.ui.form.segment
       div.field
-        h1 #{currentUser.username}的个人信息
-      div.ui.two.fields
         div.field
           .avatar
             div
               img(src='#{profile.avatarUrl}')
-        div.field
+        div.userinformation
           div.field
             .nickname
-              span 昵称:
-              span #{profile.nickname}
+              h3 昵称: #{profile.nickname}
           div.field
             .age
-              span 年龄:
-              span #{profile.age} 岁
+              h3 年龄: #{profile.age} 岁
           div.field
             .gender
-              span 性别:
-              span #{profile.gender}
+              h3 性别: #{profile.gender}
           div.field
             .occupation
-              span 职业:
-              span {{orderToOccupation profile.occupation}}
+              h3 职业: {{orderToOccupation profile.occupation}}
+        div.field
           div.ui.button
-            a(href='/followingvote') 我关注的人
+            a(href='/followingvote') 关注人的投票
           div.ui.button
             a(href='/editprofile') 修改个人信息
+      div.ui.ribbon.label.huge 关注
+      div.addsomespace
+      div.field
+        each following
+          span.userbutton
+            a(href='/profile/#{username}')
+              button.circular.ui.blue.button 
+                span
+                  i.user.icon
+                span #{username}
+      div.ui.ribbon.label.huge 粉丝
+      div.addsomespace
+      div.field
+        each followedBy
+          div.userbutton
+            a(href='/profile/#{username}')
+              button.circular.ui.blue.button
+                span
+                  i.user.icon
+                span #{username}
+
+
+

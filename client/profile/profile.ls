@@ -34,6 +34,10 @@ Template['profile'].helpers {
   profile: -> if user = Meteor.users. find-one {username: Session.get 'username'}
     user.profile
 
+  # 这个name是我加的，我想要用户名。By 陈炜健
+  name: -> if user = Meteor.users. find-one {username: Session.get 'username'}
+    user.username
+
   orderToOccupation: (order)-> if user = Meteor.users. find-one {username: Session.get 'username'}
     switch order
     | 'occup0' => '互联网科技'
