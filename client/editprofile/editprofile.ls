@@ -1,4 +1,4 @@
-Template['editprofile'].onRendered !-> #添加 By 陈炜健，参考 From 炽凯。
+Template['editprofile'].onRendered !->
   check-form!
 
 Template['editprofile'].helpers {
@@ -51,32 +51,28 @@ updateAvatar = (avatarFile)!-> if avatarFile
         liveQuery.stop!
     }
 
-#验证修改个人信息的表单。添加 By 陈炜健，参考 From 炽凯。
+#验证修改个人信息的表单
 check-form =!->
   console.log 'profile-check-form'
-  #这里可能存在选择器问题，需要debug
-  $ 'div.ui.form.segment' .form({
+  $ '#editprofile .ui.form' .form({
     nickname: {
       identifier: 'nickname'
       rules: [{
-        type: 'empty'
+        type: 'empty',
+        prompt: '昵称不能为空'
       }]
     },
     age: {
       identifier: 'age'
       rules: [{
-        type: 'integer'
+        type: 'integer',
+        prompt: '年龄必须为数字'
       }]
     },
     gender: {
       identifier: 'gender'
       rules: [{
-        type: 'empty'
-      }]
-    },
-    occupation: {
-      identifier: 'occupation'
-      rules: [{
-        type: 'empty'
+        type: 'checked',
+        prompt: '性别必须选上'
       }]
     }})
